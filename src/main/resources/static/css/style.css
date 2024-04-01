@@ -198,8 +198,8 @@ h6,
     }
 
     .header-carousel .owl-carousel-item p {
-        font-size: 16px !important;
-        font-weight: 400 !important;
+        font-size: 16px important;
+        font-weight: 400 important;
     }
 
     .header-carousel .owl-carousel-item h1 {
@@ -331,7 +331,7 @@ h6,
 }
 
 .facility-item:hover * {
-    color: #FFFFFF !important;
+    color: #FFFFFF important;
 }
 
 
@@ -341,7 +341,7 @@ h6,
 }
 
 .about-img img:hover {
-    background: var(--primary) !important;
+    background: var(--primary) important;
 }
 
 
@@ -391,7 +391,7 @@ h6,
 }
 
 .testimonial-carousel .testimonial-item .border {
-    border: 1px dashed rgba(0, 185, 142, .3) !important;
+    border: 1px dashed rgba(0, 185, 142, .3) important;
 }
 
 .testimonial-carousel .owl-nav {
@@ -466,7 +466,7 @@ h6,
 }
 
 .footer .btn.btn-link:hover {
-    color: var(--primary) !important;
+    color: var(--primary) important;
     letter-spacing: 1px;
     box-shadow: none;
 }
@@ -493,7 +493,7 @@ h6,
 
 .footer .copyright a:hover,
 .footer .footer-menu a:hover {
-    color: var(--primary) !important;
+    color: var(--primary) important;
 }
 
 .footer .footer-menu a:last-child {
@@ -502,8 +502,11 @@ h6,
     border-right: none;
 }
 
+
 .rounded-circle{
     width: 300px;
     height: 150px;
 
 }
+
+

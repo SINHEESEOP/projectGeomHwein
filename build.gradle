@@ -44,11 +44,13 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
     //SQL로그
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    //시큐리티 타임리프에서 사용
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-    //시큐리티 테스트
-    testImplementation 'org.springframework.security:spring-security-test'
+
+    //시큐리티
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    //시큐리티 타임리프에서 사용
+//    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+//    //시큐리티 테스트
+//    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
