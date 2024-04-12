@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+ .mttrCnInput {
+ 	
+ 	 border-top: 1px solid #c4c4c4;
+ 	 border-bottom: 1px solid #c4c4c4;
+ 	 padding-top : 30px;
+ 	 padding-bottom : 30px;
+ 	 
+ 	
+ }
+ 
+ 
+ .mttrCnInput > input {
+ 	
+ 		border: none;
+ }
+ 
+ .detailBtn {
+ 	padding-top : 30px;
+ 	display: flex;
+ 	justify-content: center;
+ 	
+ }
+ 
+ .detailBtn > button {
+ 
+ 	padding: 10px;
+ 	margin : 5px;
+ 	border-radius: 5px;
+ 	background-color: #D81B60;
+ 	border : none;
+ 	color : #ffffff;	
+ }

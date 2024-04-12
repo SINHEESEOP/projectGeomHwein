@@ -20,6 +20,8 @@ public class UserDetailsVO {
 	private EducationGroupVO educationGroupVO;
 	private String userId; // VARCHAR(100) NOT NULL
 	private String userTelNo; // VARCHAR(20)
+	private String userTelno; // VARCHAR(20)
+	private String userEmailAddr; // VARCHAR(100) NOT NULL
 	private String userEmlAddr; // VARCHAR(100) NOT NULL
 	private Integer userAge; // INT
 	private Integer userRating; // DECIMAL(5,2)

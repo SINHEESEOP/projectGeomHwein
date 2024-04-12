@@ -54,6 +54,13 @@ public class MainController {
 		return "mttr";
 	}
 
+	
+
+	@GetMapping("/payment")
+	public String payment() {
+		return "payment";
+	}
+	
 
 }
 

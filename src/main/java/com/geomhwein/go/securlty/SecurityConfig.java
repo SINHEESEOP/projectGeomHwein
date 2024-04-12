@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
@@ -31,6 +32,13 @@ public class SecurityConfig {
 
 		http.csrf().disable();
 
+		//세션 관리
+		  http.sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // 세션 필요 시 생성
+        .sessionFixation().migrateSession() // 세션 고정 보호
+        .maximumSessions(1) // 최대 동시 세션 허용
+        .maxSessionsPreventsLogin(false); // 동시 로그인 차단
+		
 
 		http.formLogin()
 				.loginPage("/sign_in") //우리가 만들어 놓은 커스터마이징된 페이지의 경로를 로그인페이지로 사용함
@@ -62,7 +70,15 @@ public class SecurityConfig {
 				.authenticationSuccessHandler(authenticationSuccessHandler());
 
 		return http.build();
+		
+		
+		
+
+		
+		
 	}
+	
+	
 
 	//인증실패핸들러
 	@Bean
