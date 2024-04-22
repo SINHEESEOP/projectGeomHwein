@@ -4,14 +4,14 @@
 <mapper namespace="com.geomhwein.go.user.service.UserMapper">
 
 	<insert id="comunityForm">
-	insert into COMUNITY(PST_TTL_NM,PST_TTL_CN,INQ_CNT,REPLY_CNT,USERID) VALUES(#{pstTtlNm},#{pstTtlCn},0,0,#{userId})
+	insert into COMUNITY(PST_TTL_NM,PST_TTL_CN,USER_ID) VALUES(#{pstTtlNm},#{pstTtlCn},#{userId})
 	</insert>
 	
 	<select id="getComunityList" resultType="comunityVO">
 	select * 
 	from COMUNITY
 	<if test='searchInput != null'>
-		where pst_ttl_nm like concat('%',#{searchInput},'%') OR userId like concat('%',#{searchInput},'%')
+		where pst_ttl_nm like concat('%',#{searchInput},'%') OR USER_ID like concat('%',#{searchInput},'%')
 	</if>
 	<if test="searchFilter == 'new'">
 		ORDER BY pst_ttl_no DESC
@@ -51,7 +51,7 @@
 	<insert id="registFile">
 		
 		<selectKey resultType="int" keyProperty="pstTtlNo" order="BEFORE">
-			select max(pst_ttl_no) from COMUNITY where USERID = #{userId}
+			select max(pst_ttl_no) from COMUNITY where USER_ID = #{userId}
 		</selectKey>
 		
 	insert into COMUNITY_UPLOAD(
@@ -59,7 +59,7 @@
 		file_path,
 		uuid,
 		pst_ttl_no,
-		USERID
+		USER_ID
 	)
 	values(
 	#{fileName},
@@ -75,7 +75,7 @@
 	</select>
 	
 	<insert id="replyAdd">
-	insert into REPLY(PST_TTL_NO,REPLY_CN,USERID,PARENT_REPLY_NO) values(#{pstTtlNo},#{replyCn},#{userId},#{parentReplyNo})
+	insert into REPLY(PST_TTL_NO,REPLY_CN,USER_ID,PARENT_REPLY_NO) values(#{pstTtlNo},#{replyCn},#{userId},#{parentReplyNo})
 	</insert>
 	
 	<select id="getGroupOne" resultType="EducationGroupVO">
@@ -85,9 +85,8 @@
 		SELECT * FROM EDUCATION_GROUP
 	</select>
 	
-	
 	<insert id="applyGroup">
-		insert into group_application(GROUP_NO,USER_ID)
+		insert into GROUP_APPLICATION(GROUP_NO,USER_ID)
 		values(#{groupNo},#{userId})
 	</insert>
 	
@@ -204,8 +203,8 @@
 	</delete>
 	
 	<select id="getGroupApplyList" resultType="GroupApplicationVO">
-	SELECT * from group_application G
-	LEFT JOIN  education_group E ON  E.GROUP_NO = G.GROUP_NO
+	SELECT * from GROUP_APPLICATION G
+	LEFT JOIN  EDUCATION_GROUP E ON  E.GROUP_NO = G.GROUP_NO
 	WHERE  G.USER_ID = #{userId}
 	 </select>
 
@@ -224,7 +223,7 @@
     	values(#{userId},#{groupNo})
     </insert>
     <insert id="registCreator">
-    	INSERT INTO teacher_evaluations(USER_ID,DOC_ID,DOC_TYPE)
+    	INSERT INTO TEACHER_EVALUATIONS(USER_ID,DOC_ID,DOC_TYPE)
     	values(#{userId},#{docId},#{docType})
     </insert>
 
@@ -234,11 +233,11 @@
 	</select>
 	
 	<select id="getHomeworkList" resultType="HomeworkVO">
-	select * from homework where USER_ID = #{userId}
+	select * from HOMEWORK where USER_ID = #{userId}
 	</select>
 	
 	<select id="homeworkReg" resultType="HomeworkVO">
-	select * from homework where asmt_no = #{asmtNo}
+	select * from HOMEWORK where asmt_no = #{asmtNo}
 	</select>
 	
 	<insert id="submissionForm">
@@ -262,6 +261,6 @@
     
     <delete id="applyCancle">
     	
-    	delete from group_application where APLY_NO = #{aplyNO}
+    	delete from GROUP_APPLICATION where APLY_NO = #{aplyNO}
     </delete>
 </mapper>

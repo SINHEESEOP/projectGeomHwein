@@ -45,7 +45,7 @@
 	
 	<select id="ContentList" resultType="ContentVO">
 	
-	select * from content C 
+	select * from CONTENT C 
 	LEFT JOIN CONTENT_UPLOAD U 
 	ON C.CONTS_SN = U.CONTS_SN order by C.CONTS_SN desc
 	limit #{pageStart}, #{amount}
@@ -54,7 +54,7 @@
 	
 	<select id="getContentTotal" resultType="int">
 	
-	select count(*) from content C 
+	select count(*) from CONTENT C 
 	LEFT JOIN CONTENT_UPLOAD U 
 	ON C.CONTS_SN = U.CONTS_SN;
 	
@@ -63,7 +63,7 @@
 	
 	<insert id="contentInsert">
 	
-		insert into Content (CONTS_NM, CONTS_EXPLN, CONTS_PRC, UTZTN_NOPE,CONTS_GRD,USER_ID)
+		insert into CONTENT (CONTS_NM, CONTS_EXPLN, CONTS_PRC, UTZTN_NOPE,CONTS_GRD,USER_ID)
 		
 		values(#{contsNm}, #{contsExpln}, #{contsPrc}, #{utztnNope}, #{contsGrd},#{userId})
 		
@@ -81,7 +81,7 @@
 	</selectKey>
 	
 	
-	insert into Content_Upload (fileName, filePath, uuId, CONTS_SN)
+	insert into CONTENT_UPLOAD (fileName, filePath, uuId, CONTS_SN)
 	
 	values(#{fileName}, #{filePath}, #{uuId}, #{contsSn})
 		
@@ -102,7 +102,7 @@
         U.filePath,
         U.uuId
     FROM 
-        content C
+        CONTENT C
     LEFT JOIN 
         CONTENT_UPLOAD U 
     ON 

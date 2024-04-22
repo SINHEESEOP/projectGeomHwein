@@ -11,7 +11,7 @@
                 #{userPwHash},
                 #{userNm},
                 'testemail@naver.com',
-                'ROLE_CREATOR'
+                'ROLE_USER'
              )
     </insert>
 
